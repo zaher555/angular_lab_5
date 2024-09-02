@@ -1,0 +1,91 @@
+@if(pId === '0')
+{
+  <h1 class="text-center pt-5">New Product</h1>
+<form class="w-50 p-5 m-auto border rounded mt-5" [formGroup]="addProductForm" (submit)="assignData()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Product Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter Product Name" formControlName="name">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="mt-3">
+      <small class="alert alert-danger" *ngIf="name?.errors?.['required']">
+        This Field is Required
+      </small>
+      <small class="alert alert-danger" *ngIf="name?.errors?.['minlength']">
+        Product name must be at least {{name?.errors?.['minlength']?.requiredLength}} characters long
+      </small>
+    </div>
+  </div>
+
+
+
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" class="form-control" id="Price" placeholder="Enter Price" formControlName="price">
+    <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="mt-3">
+      <small class="alert alert-danger" *ngIf="price?.errors?.['required']">
+        This Field is Required
+      </small>
+      <small class="alert alert-danger" *ngIf="price?.errors?.['min']">
+        price must be at least {{price?.errors?.['minlength']?.requiredLength}} 1
+      </small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input type="number" class="form-control" id="quantity" placeholder="Enter Quantity" formControlName="quantity">
+    <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)" class="mt-3">
+      <small class="alert alert-danger" *ngIf="quantity?.errors?.['required']">
+        This Field is Required
+      </small>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-success d-block w-50 m-auto mt-5" value="Add" [disabled]="addProductForm.invalid">
+</form>
+}
+
+
+
+@else if(pId != '0')
+{
+<h1 class="text-center pt-5">Edit Product</h1>
+<form class="w-50 p-5 m-auto border rounded mt-5" [formGroup]="addProductForm" (submit)="editData()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Product Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Enter Product Name" formControlName="name">
+    <div *ngIf="name?.invalid && (name?.dirty || name?.touched)" class="mt-3">
+      <small class="alert alert-danger" *ngIf="name?.errors?.['required']">
+        This Field is Required
+      </small>
+      <small class="alert alert-danger" *ngIf="name?.errors?.['minlength']">
+        Product name must be at least {{name?.errors?.['minlength']?.requiredLength}} characters long
+      </small>
+    </div>
+  </div>
+
+
+
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input type="number" class="form-control" id="Price" placeholder="Enter Price" formControlName="price">
+    <div *ngIf="price?.invalid && (price?.dirty || price?.touched)" class="mt-3">
+      <small class="alert alert-danger" *ngIf="price?.errors?.['required']">
+        This Field is Required
+      </small>
+      <small class="alert alert-danger" *ngIf="price?.errors?.['min']">
+        price must be at least {{price?.errors?.['minlength']?.requiredLength}} 1
+      </small>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="quantity" class="form-label">Quantity</label>
+    <input type="number" class="form-control" id="quantity" placeholder="Enter Quantity" formControlName="quantity">
+    <div *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)" class="mt-3">
+      <small class="alert alert-danger" *ngIf="quantity?.errors?.['required']">
+        This Field is Required
+      </small>
+    </div>
+  </div>
+  <input type="submit" class="btn btn-success d-block w-50 m-auto mt-5" value="Edit" [disabled]="addProductForm.invalid">
+</form>
+}

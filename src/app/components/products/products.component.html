@@ -1,0 +1,31 @@
+<div class="p-5">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-center bg-success text-white">ID</th>
+        <th class="text-center bg-success text-white">Name</th>
+        <th class="text-center bg-success text-white">Price</th>
+        <th class="text-center bg-success text-white">Quantity</th>
+        <th class="text-center bg-success text-white">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of allProducts; track $index) {
+      <tr>
+        <td class="text-center">{{product.id}}</td>
+        <td class="text-center">{{product.name}}</td>
+        <td class="text-center">{{product.price | currency:'USD'}}</td>
+        <td class="text-center">{{product.quantity}}</td>
+        <td class="text-center">
+          <i class="fa-solid fa-pen-to-square text-warning" title="edit" [routerLink]="['/products-form',product.id]"></i>
+          <i class="fa-solid fa-eye ps-2" title="view" [routerLink]="['/products',product.id]"></i>
+          <i class="fa-solid fa-trash-can text-danger ps-2" title="delete" (click)="deleteProduct(product.id)"></i>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+  <div class="text-center">
+    <button class="btn btn-success" [routerLink]="['/products-form',0]">New Product</button>
+  </div>
+</div>
